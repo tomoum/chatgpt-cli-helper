@@ -1,0 +1,69 @@
+{
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false,
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
+    },
+    "markdownlint.config": {
+        "MD025": false
+    },
+    "editor.bracketPairColorization.enabled": true,
+    "editor.detectIndentation": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.insertSpaces": true,
+    "editor.rulers": [
+        88
+    ],
+    "editor.tabSize": 4,
+    "explorerExclude.backup": {},
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/__pycache__": true,
+        "**/.coverage": true,
+        "**/.coveragerc": true,
+        "**/.pytest_cache": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": true,
+    "git.fetchOnPull": true,
+    "git.pruneOnFetch": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.languageServer": "Pylance",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--load-plugins pylint_pydantic"
+    ],
+    "python.terminal.activateEnvironment": false,
+    "python.terminal.executeInFileDir": true,
+    "todo-tree.highlights.enabled": false,
+    "workbench.colorCustomizations": {
+        "editor.lineHighlightBackground": "#1073cf2d",
+        "editor.lineHighlightBorder": "#9fced11f"
+    },
+    "python.analysis.autoImportCompletions": false,
+    "cSpell.enabled": true,
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
