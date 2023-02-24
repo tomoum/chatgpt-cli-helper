@@ -41,13 +41,12 @@ SHELL_TYPE = "bash"
 function ai() {
     local ai_cmd=$(python ~/.my_toolbox/chatgpt-cli-helper/src/main.py "$1" | fzf)
     echo "$ai_cmd"                                     # print the selected command
-    printf "%s" "$ai_cmd" | xclip -selection clipboard # copy the command to clipboard
-
     # optionally
-    # printf "\033[G\033[K%s" "$command"                    # place the command on the command line buffer
+    # printf "%s" "$ai_cmd" | xclip -selection clipboard # copy the command to clipboard
+    # printf "\033[G\033[K%s" "$ai_cmd"                  # place the command on the command line buffer
 }
 ```
 
-3. Relaunch your shell for it to take effect or do `source ~/.bashrc`
+1. Relaunch your shell for it to take effect or do `source ~/.bashrc`
 
 Example usage: `ai "list all python files in my current directory"`
