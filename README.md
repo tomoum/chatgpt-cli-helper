@@ -2,16 +2,22 @@
 
 get chatGPT to generate shell commands directly from your CLI
 
+## Demo
+
+Example usage: `ai "list all python files in my current directory"`
+
 # Pre-requisites
 
 ## Tools
 
-Must have all these tools installed and on path:
+Required Installations:
 
-* `sudo apt install fzf` or `brew install fzf`
-* `sudo apt install xclip`
-* `sudo apt install python` or `brew install python`(tested on 3.10.10)
+* `sudo apt install python` or `brew install python` (tested on 3.10.10)
 * `pip install openai`
+
+Optional:
+
+* `sudo apt install xclip`
 
 ## OpenAI API key
 
@@ -19,7 +25,7 @@ Must have all these tools installed and on path:
 2. create a file called `.openai-key` and place it in a folder called `keys` the root directory of the project.
 i.e `keys/.openai-key`
 
-Note: You may need to provide your billing details for the open to allow your
+Note: You may need to provide your billing details for the openAI API to allow your
 requests. You can set a maximum dollar spend amount limit to something you can
 live with. 😄💸
 
@@ -39,7 +45,7 @@ SHELL_TYPE = "bash"
 
 ```bash
 function ai() {
-    local ai_cmd=$(python ~/.my_toolbox/chatgpt-cli-helper/src/main.py "$1" | fzf)
+    local ai_cmd=$(python ~/.my_toolbox/chatgpt-cli-helper/src/main.py "$1")
     echo "$ai_cmd"                                     # print the selected command
     # optionally
     # printf "%s" "$ai_cmd" | xclip -selection clipboard # copy the command to clipboard
@@ -48,5 +54,3 @@ function ai() {
 ```
 
 1. Relaunch your shell for it to take effect or do `source ~/.bashrc`
-
-Example usage: `ai "list all python files in my current directory"`

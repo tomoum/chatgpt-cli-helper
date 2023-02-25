@@ -28,7 +28,11 @@ class AppConfig:
     def init() -> AppConfig:
         exe_file_dir = Path(os.path.dirname(__file__))
         api_file = exe_file_dir.parent / API_KEY_LOCATION
-        api_key = api_file.read_text(encoding="utf-8")
+        try:
+            api_key = api_file.read_text(encoding="utf-8")
+        except FileNotFoundError:
+            api_key = input("Please enter your OpenAI API key: ")
+            api_file.write_text(api_key, encoding="utf-8")
 
         return AppConfig(exe_file_dir=exe_file_dir, api_key=api_key)
 
@@ -56,7 +60,9 @@ def main() -> None:  # pylint: disable=missing-function-docstring
     app_config = AppConfig.init()
     openai.api_key = app_config.api_key
 
-    primer = "you are senior systems admin. I need your help generating executable CLI commands in {SHELL_TYPE} on {OS_VERSION}. Please provide me with a command that I can execute directly, without any additional text or explanations."
+    primer = "you are senior systems admin. I need your help generating executable CLI \
+commands in {SHELL_TYPE} on {OS_VERSION}. Please provide me with a command that I can \
+execute directly, without any additional text or explanations."
     prompt_input = primer + sys.argv[1]
     cmd, _ = generate_command(prompt_input)
 
