@@ -1,10 +1,11 @@
 # ChatGPT-cli-helper
 
-get chatGPT to generate shell commands directly from your CLI
+get chatGPT to help you generate shell commands directly from your CLI
 
 Example usage: `ai "list all python files in my current directory"`
 
-https://user-images.githubusercontent.com/14957264/221426546-3df18366-d54e-4a35-a269-92ba4ff86884.mp4
+![chatgpt_demo_v0 0 1](https://user-images.githubusercontent.com/14957264/221429391-661a5a72-e3ef-4b64-a789-4eb72dffd081.gif)
+
 
 # Pre-requisites
 
