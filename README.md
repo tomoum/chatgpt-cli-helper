@@ -3,6 +3,7 @@
 get chatGPT to generate shell commands directly from your CLI
 
 Example usage: `ai "list all python files in my current directory"`
+
 https://user-images.githubusercontent.com/14957264/221426546-3df18366-d54e-4a35-a269-92ba4ff86884.mp4
 
 # Pre-requisites
