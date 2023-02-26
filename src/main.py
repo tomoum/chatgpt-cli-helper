@@ -50,8 +50,8 @@ def generate_command(prompt_input):
 
     # extract command from generated text
     generated_text = str(response.choices[0].text)  # type: ignore
-    # remove trailing and leading spaces and `\n` characters
-    command = generated_text.strip("\n").strip()
+    # remove trailing and leading: `\n` then ':' then whitespace
+    command = generated_text.strip("\n").strip(":").strip()
     # return command and full generated text
     return command, generated_text
 
