@@ -6,7 +6,6 @@ Example usage: `ai "list all python files in my current directory"`
 
 ![chatgpt_demo_v0 0 1](https://user-images.githubusercontent.com/14957264/221429391-661a5a72-e3ef-4b64-a789-4eb72dffd081.gif)
 
-
 # Pre-requisites
 
 ## Tools
@@ -32,7 +31,9 @@ live with. 😄💸
 
 # Instructions
 
-1. Modify the constants found at the top of `main.py` file to your specific needs.
+## Step 1: For Everyone
+
+Modify the constants found at the top of `main.py` file to your specific needs.
 
 ```python
 # keys folder in the root of the project with the api key in a file named `.openai-key`
@@ -41,17 +42,23 @@ OS_VERSION = "ubuntu 20.04 running on wsl2"
 SHELL_TYPE = "bash"
 ```
 
-2. Add the snippet below to your `~./.bashrc` file and update the path to your
+## Step 2: Depending on your Shell, OS and System
+
+### Bash on WSL2
+
+1. Add the snippet below to your `~./.bashrc` file and update the path to your
    python script location mine is `~/.my_toolbox/chatgpt-cli-helper/src/main.py`
 
 ```bash
 function ai() {
     local ai_cmd=$(python ~/.my_toolbox/chatgpt-cli-helper/src/main.py "$1")
     echo "$ai_cmd"                                     # print the selected command
-    # optionally
-    # printf "%s" "$ai_cmd" | xclip -selection clipboard # copy the command to clipboard
+    # optionally:
+    # For bash on wsl2 with access to windows executables
+    # local ai_cmd=$(python ~/.my_toolbox/chatgpt-cli-helper/src/main.py "$1" | clip.exe) # copy the command to clipboard
     # printf "\033[G\033[K%s" "$ai_cmd"                  # place the command on the command line buffer
 }
 ```
 
-1. Relaunch your shell for it to take effect or do `source ~/.bashrc`
+> IMPORTANT:  
+> Remember to relaunch your shell for changes to take effect or do `source ~/.bashrc`
