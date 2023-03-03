@@ -56,6 +56,14 @@ def generate_command(prompt_input):
     return command, generated_text
 
 
+def clean_terminal_line():
+    # move the cursor to the beginning of the line
+    sys.stdout.write("\r")
+    # clear the line
+    sys.stdout.write("\033[K")
+    sys.stdout.flush()
+
+
 def main() -> None:  # pylint: disable=missing-function-docstring
     app_config = AppConfig.init()
     openai.api_key = app_config.api_key
@@ -66,7 +74,8 @@ execute directly, without any additional text or explanations."
     prompt_input = primer + sys.argv[1]
     cmd, _ = generate_command(prompt_input)
 
-    print(cmd)
+    clean_terminal_line()
+    print(cmd, flush=True)
     # Program Done
 
 

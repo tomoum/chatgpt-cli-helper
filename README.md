@@ -52,11 +52,12 @@ SHELL_TYPE = "bash"
 ```bash
 function ai() {
     local ai_cmd=$(python ~/.my_toolbox/chatgpt-cli-helper/src/main.py "$1")
-    echo "$ai_cmd"                                     # print the selected command
-    # optionally:
-    # For bash on wsl2 with access to windows executables
-    # local ai_cmd=$(python ~/.my_toolbox/chatgpt-cli-helper/src/main.py "$1" | clip.exe) # copy the command to clipboard
-    # printf "\033[G\033[K%s" "$ai_cmd"                  # place the command on the command line buffer
+    echo "$ai_cmd"            # print the selected command
+    echo "$ai_cmd" | clip.exe # add to clipboard in wsl2
+    # optionally
+    # printf "%s" "$ai_cmd" | xclip -selection clipboard # copy the command to
+    # clipboard on non wsl linux os
+    # printf "\033[G\033[K%s" "$ai_cmd" # place the command on the command line buffer
 }
 ```
 
