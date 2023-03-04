@@ -12,7 +12,7 @@ from pathlib import Path
 
 import openai
 
-APP_VERSION = "v0.0.1"
+APP_VERSION = "v0.0.2"
 # keys folder in the root of the project with the api key in a file named `.openai-key`
 API_KEY_LOCATION = Path("keys") / ".openai-key"
 OS_VERSION = "ubuntu 20.04 running on wsl2"
@@ -27,6 +27,15 @@ class AppConfig:
     @staticmethod
     def init() -> AppConfig:
         exe_file_dir = Path(os.path.dirname(__file__))
+        api_key = AppConfig._get_api_key(exe_file_dir)
+
+        return AppConfig(exe_file_dir=exe_file_dir, api_key=api_key)
+
+    @staticmethod
+    def _get_api_key(exe_file_dir: Path):
+        if api_key := os.getenv("OPENAI_API_KEY"):
+            return api_key
+
         api_file = exe_file_dir.parent / API_KEY_LOCATION
         try:
             api_key = api_file.read_text(encoding="utf-8")
@@ -34,7 +43,7 @@ class AppConfig:
             api_key = input("Please enter your OpenAI API key: ")
             api_file.write_text(api_key, encoding="utf-8")
 
-        return AppConfig(exe_file_dir=exe_file_dir, api_key=api_key)
+        return api_key
 
 
 def generate_command(prompt_input):
