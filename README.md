@@ -42,6 +42,8 @@ OS_VERSION = "ubuntu 20.04 running on wsl2"
 SHELL_TYPE = "bash"
 ```
 
+TODO: update docs with powershell and env variable update
+
 ## Step 2: Depending on your Shell, OS and System
 
 ### Bash on WSL2
